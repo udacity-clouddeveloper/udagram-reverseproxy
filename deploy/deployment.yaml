@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: reverseproxy
-  name: reverseproxy
+    service: simple-reverse-proxy
+  name: simple-reverse-proxy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: reverseproxy
+      service: simple-reverse-proxy
   template:
     metadata:
       labels:
-        service: reverseproxy
+        service: simple-reverse-proxy
     spec:
       containers:
       - image: felipefmb/simple-reverse-proxy
-        name: reverseproxy
+        name: simple-reverse-proxy
         imagePullPolicy: Always          
         resources:
           requests:
@@ -24,7 +24,8 @@ spec:
             cpu: "250m"
           limits:
             memory: "1024Mi"
-            cpu: "500m"       
+            cpu: "500m"
         ports:
         - containerPort: 8080
       restartPolicy: Always
+        
