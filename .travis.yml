@@ -15,9 +15,9 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker build -t simple-reverse-proxy .
-  - docker tag simple-reverse-proxy felipefmb/simple-reverse-proxy:latest
+  - docker build -t reverseproxy .
+  - docker tag reverseproxy felipefmb/reverseproxy:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push felipefmb/simple-reverse-proxy
+  - docker push felipefmb/reverseproxy
